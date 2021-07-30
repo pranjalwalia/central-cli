@@ -6,7 +6,7 @@
   "author": "Pranjal Walia <pranjalwalia77@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node -r esm ./src/index"
+    "start": "node -r esm ./src/index  init"
   },
   "type": "module",
   "dependencies": {
