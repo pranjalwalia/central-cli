@@ -1,0 +1,24 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:masterchief01/central-cli.git",
+  "author": "Pranjal Walia <pranjalwalia77@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "init": "node src/index init",
+    "search": "node src/index search"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.7.2",
+    "axios": "^0.21.1",
+    "chalk": "^4.1.2",
+    "clear": "^0.1.0",
+    "commander": "^8.1.0",
+    "configstore": "3.1.5",
+    "figlet": "^1.5.0",
+    "glob": "^7.1.7",
+    "inquirer": "^8.1.2",
+    "simple-git": "^2.41.2"
+  }
+}
