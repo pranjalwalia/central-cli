@@ -7,7 +7,8 @@
   "license": "MIT",
   "scripts": {
     "init": "node src/index init",
-    "search": "node src/index search"
+    "search": "node src/index search",
+    "ignore": "node src/index ignore"
   },
   "dependencies": {
     "@octokit/rest": "^18.7.2",
