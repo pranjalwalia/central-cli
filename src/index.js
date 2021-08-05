@@ -2,7 +2,7 @@
 
 const commander = require("commander");
 const { init } = require("./commands/init");
-const { search, stackoverflow, youtube } = require("./commands/search");
+const { search, stackoverflow, youtube, google } = require("./commands/search");
 
 commander.command("init").description("run the central cli").action(init);
 
@@ -23,6 +23,12 @@ commander
   .alias("yt")
   .description("search youtube")
   .action(youtube);
+
+commander
+  .command("google")
+  .alias("g")
+  .description("search google")
+  .action(google);
 
 commander.parse(process.argv);
 

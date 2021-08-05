@@ -35,4 +35,12 @@ const youtube = async () => {
   console.log(chalk.green(JSON.stringify(res.data)));
 };
 
-module.exports = { search, stackoverflow, youtube };
+const google = async () => {
+  const input = await prompt(questions);
+  const res = await axios.get(`${baseURl}/google?query=${input.query}`);
+
+  //todo: format this response so it looks good
+  console.log(chalk.green(JSON.stringify(res.data)));
+};
+
+module.exports = { search, stackoverflow, youtube, google };
