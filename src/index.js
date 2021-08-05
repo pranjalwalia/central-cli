@@ -1,11 +1,21 @@
 #!/usr/bin/env node
 
 const commander = require("commander");
+
 const { init } = require("./commands/init");
+const { gitignore } = require("./commands/gitignore");
 const { search, stackoverflow, youtube, google } = require("./commands/search");
 
+//! git utilites
 commander.command("init").description("run the central cli").action(init);
 
+commander
+  .command("ignore")
+  .description("generate a gitignore or modify existing one")
+  .alias("ig")
+  .action(gitignore);
+
+//! search utils
 commander
   .command("search")
   .alias("s")
