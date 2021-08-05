@@ -6,9 +6,9 @@
   "author": "Pranjal Walia <pranjalwalia77@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node -r esm ./src/index  init"
+    "init": "node src/index init",
+    "search": "node src/index search"
   },
-  "type": "module",
   "dependencies": {
     "@octokit/rest": "^18.7.2",
     "chalk": "^4.1.2",

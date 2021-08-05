@@ -1,10 +1,17 @@
 #!/usr/bin/env node
-import commander from "commander";
-import { init } from "./commands/init.js";
+
+const commander = require("commander");
+const { init } = require("./commands/init");
+const { search } = require("./commands/search");
 
 commander.command("init").description("run the central cli").action(init);
+commander
+  .command("search")
+  .description("search various forums with a single line query")
+  .action(search);
 
 commander.parse(process.argv);
+
 if (!commander.args.length) {
   commander.help();
 }

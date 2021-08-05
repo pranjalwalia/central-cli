@@ -1,12 +1,12 @@
-import path from "path";
-import inquirer from "inquirer";
-import fs from "fs";
-import glob from "glob";
-import git from "simple-git";
+const path = require("path");
+const inquirer = require("inquirer");
+const fs = require("fs");
+const glob = require("glob");
+const git = require("simple-git");
 
 const gitOps = git();
 
-export const createRepo = async (octokit) => {
+const createRepo = async (octokit) => {
   const questions = [
     {
       name: "name",
@@ -51,7 +51,7 @@ export const createRepo = async (octokit) => {
   }
 };
 
-export const ignoreFiles = async () => {
+const ignoreFiles = async () => {
   const files = glob.sync("**/*", { ignore: "**/node_modules/**" });
   const defaultIgnore = [
     "/build",
@@ -89,7 +89,7 @@ export const ignoreFiles = async () => {
   }
 };
 
-export const initialCommit = async (url) => {
+const initialCommit = async (url) => {
   try {
     await gitOps
       .init()
@@ -103,3 +103,5 @@ export const initialCommit = async (url) => {
     console.log("Something is wrong at initialCommit", error.message);
   }
 };
+
+module.exports = { initialCommit, ignoreFiles, createRepo };

@@ -1,15 +1,11 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-
-import inquirer from "inquirer";
-import { Octokit } from "@octokit/rest";
-import Configstore from "configstore";
+const { inquirer } = require("inquirer");
+const { Octokit } = require("@octokit/rest");
+const Configstore = require("configstore");
 const { name } = require("../../package.json");
-import path from "path";
 
-export const config = new Configstore(name);
+const config = new Configstore(name);
 
-export const authenticate = async () => {
+const authenticate = async () => {
   let token = config.get("github_token");
   if (token) {
     try {
@@ -46,3 +42,5 @@ export const authenticate = async () => {
     }
   }
 };
+
+module.exports = { config, authenticate };

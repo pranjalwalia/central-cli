@@ -1,11 +1,11 @@
-import chalk from "chalk";
-import figlet from "figlet";
-import clear from "clear";
-import inquirer from "inquirer";
-import { authenticate } from "../libs/auth.js";
-import { createRepo, ignoreFiles, initialCommit } from "../libs/repo.js";
+const chalk = require("chalk");
+const figlet = require("figlet");
+const clear = require("clear");
+const inquirer = require("inquirer");
+const { authenticate } = require("../libs/auth.js");
+const { createRepo, ignoreFiles, initialCommit } = require("../libs/repo.js");
 
-export const init = async () => {
+const init = async () => {
   clear();
   console.log(
     chalk.magentaBright(
@@ -49,3 +49,5 @@ export const init = async () => {
     console.log(chalk.blue("Okay, bye."));
   }
 };
+
+module.exports = { init };
