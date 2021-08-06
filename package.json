@@ -7,20 +7,16 @@
   "author": "Pranjal Walia <pranjalwalia77@gmail.com>",
   "license": "MIT",
   "scripts": {
-<<<<<<< HEAD
-    "init": "node src/index.js init",
-    "search": "node src/index search"
-=======
     "init": "node src/index init",
     "search": "node src/index search",
     "ignore": "node src/index ignore"
->>>>>>> 567eb0a72341a99b5819c2be71c71e1ee18b81d6
   },
   "dependencies": {
     "@octokit/rest": "^18.7.2",
     "axios": "^0.21.1",
     "chalk": "^4.1.2",
     "clear": "^0.1.0",
+    "columnify": "^1.5.4",
     "commander": "^8.1.0",
     "configstore": "3.1.5",
     "figlet": "^1.5.0",
