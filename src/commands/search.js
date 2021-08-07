@@ -4,6 +4,7 @@ const columnify = require("columnify");
 const { prompt } = require("inquirer");
 const { baseURl } = require("../config");
 
+// propmt the user for the query
 const questions = [
   {
     type: "input",
@@ -12,10 +13,13 @@ const questions = [
   },
 ];
 
+// handler for all search function utils
 const search = async () => {
   const input = await prompt(questions);
+  // make request to the server with the query
   const res = await axios.get(`${baseURl}?query=${input.query}`);
 
+  // prettify the response
   console.log(
     `\n` +
       chalk.yellowBright(
@@ -56,6 +60,7 @@ const search = async () => {
   );
 };
 
+// handler for all stackoverflow specific queries
 const stackoverflow = async () => {
   const input = await prompt(questions);
   const res = await axios.get(`${baseURl}/stackoverflow?query=${input.query}`);
@@ -74,6 +79,7 @@ const stackoverflow = async () => {
   );
 };
 
+// handler for all youtube specific queries
 const youtube = async () => {
   const input = await prompt(questions);
   const res = await axios.get(`${baseURl}/youtube?query=${input.query}`);
@@ -92,6 +98,7 @@ const youtube = async () => {
   );
 };
 
+// handler for all google specific queries
 const google = async () => {
   const input = await prompt(questions);
   const res = await axios.get(`${baseURl}/google?query=${input.query}`);

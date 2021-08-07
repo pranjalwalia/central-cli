@@ -1,6 +1,8 @@
+const { default: axios } = require("axios");
 const { exec } = require("child_process");
 const { prompt } = require("inquirer");
 
+// default gitignore options
 const questions = [
   {
     type: "checkbox",
@@ -29,6 +31,7 @@ const questions = [
   },
 ];
 
+// gitignore generator here
 const gitignore = async () => {
   const input = await prompt(questions);
   if (input.ignore) {

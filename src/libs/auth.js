@@ -3,8 +3,11 @@ const { Octokit } = require("@octokit/rest");
 const Configstore = require("configstore");
 const { name } = require("../../package.json");
 
+// initialise usr config to store the github oauthtoken
+// oauth token is required for interacting with the github api
 const config = new Configstore(name);
 
+// authentication prerequisites with the github api
 const authenticate = async () => {
   let token = config.get("github_token");
   if (token) {

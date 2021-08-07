@@ -5,6 +5,7 @@ const inquirer = require("inquirer");
 const { authenticate } = require("../libs/auth.js");
 const { createRepo, ignoreFiles, initialCommit } = require("../libs/repo.js");
 
+// handle all repo initializer workflow
 const init = async () => {
   clear();
   console.log(
@@ -29,17 +30,27 @@ const init = async () => {
   const answer = await inquirer.prompt(questions);
   if (answer.proceed == "Yes") {
     console.log(chalk.blue("Authenticating..."));
+
+    // authenticate the oauth token
     const octokit = await authenticate();
     console.log(chalk.blue("Initializing new remote repo..."));
+
+    // create the repo post auth
     const url = await createRepo(octokit);
 
     console.log(chalk.blue("Remote repo created. Choose files to ignore."));
+
+    // gigignore
     await ignoreFiles();
 
     console.log(
       chalk.blue("Committing files to GitHub at: " + chalk.yellow(url))
     );
+
+    // make the initial commit
     const commit = await initialCommit(url);
+
+    // if it doesnt fail
     if (commit) {
       console.log(
         chalk.green("Your project has been successfully committed to Github!")

@@ -4,8 +4,12 @@ const fs = require("fs");
 const glob = require("glob");
 const git = require("simple-git");
 
+/**
+ * utility functions for interacting with the github api
+ * */
 const gitOps = git();
 
+// create a repo with a given name
 const createRepo = async (octokit) => {
   const questions = [
     {
@@ -51,6 +55,7 @@ const createRepo = async (octokit) => {
   }
 };
 
+// initialising a gitignore
 const ignoreFiles = async () => {
   const files = glob.sync("**/*", { ignore: "**/node_modules/**" });
   const defaultIgnore = [
@@ -89,6 +94,7 @@ const ignoreFiles = async () => {
   }
 };
 
+// making the initial commit
 const initialCommit = async (url) => {
   try {
     await gitOps
