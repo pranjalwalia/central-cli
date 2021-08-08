@@ -3,13 +3,11 @@ const inquirer = require("inquirer");
 const fs = require("fs");
 const glob = require("glob");
 const git = require("simple-git");
+const shell = require("shelljs");
+const chalk = require("chalk");
 
-/**
- * utility functions for interacting with the github api
- * */
 const gitOps = git();
 
-// create a repo with a given name
 const createRepo = async (octokit) => {
   const questions = [
     {
@@ -49,13 +47,13 @@ const createRepo = async (octokit) => {
 
   try {
     const response = await octokit.repos.createForAuthenticatedUser(data);
-    return response.data.clone_url;
+    // console.log("response: ", response);
+    return response.data.ssh_url;
   } catch (error) {
     console.log("Something is wrong at repo creation", error.message);
   }
 };
 
-// initialising a gitignore
 const ignoreFiles = async () => {
   const files = glob.sync("**/*", { ignore: "**/node_modules/**" });
   const defaultIgnore = [
@@ -94,16 +92,18 @@ const ignoreFiles = async () => {
   }
 };
 
-// making the initial commit
 const initialCommit = async (url) => {
+  if (!url) {
+    console.log(chalk.red("Error occoured while generating clone url"));
+    return false;
+  }
   try {
-    await gitOps
-      .init()
-      .add(".gitignore")
-      .add("./*")
-      .commit("Initial commit")
-      .addRemote("origin", url);
-    await gitOps.push(url, "master", ["--set-upstream"]);
+    shell.exec("git init");
+    shell.exec("git add .");
+    shell.exec(`git remote add origin ${url}`);
+    shell.exec('git commit -m "Initial Commit by centrl"');
+    shell.exec("git push origin master");
+
     return true;
   } catch (error) {
     console.log("Something is wrong at initialCommit", error.message);
