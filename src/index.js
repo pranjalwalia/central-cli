@@ -5,6 +5,8 @@ const { init } = require("./commands/init");
 const { gitignore } = require("./commands/gitignore");
 const { search, stackoverflow, youtube, google } = require("./commands/search");
 const { fastcommit, fastpush } = require("./commands/fastcommit");
+const { changesToPush } = require("./commands/push-diff");
+
 const { inputstring } = require("./utils");
 
 //! git utilites
@@ -12,7 +14,9 @@ commander.command("init").description("run the central cli").action(init);
 
 commander
   .command("ignore")
-  .description("generate a gitignore or modify existing one")
+  .description(
+    "generate a preset gitignore for a language or modify existing one"
+  )
   .alias("ig")
   .action(gitignore);
 
@@ -24,6 +28,16 @@ commander
     //todo: update this args
     const msg = inputstring();
     fastcommit(msg);
+  });
+
+commander
+  .command("rem-commit <branch>")
+  .description(
+    "check the commits that need to be pushed on the current branch to another branch"
+  )
+  .alias("rmc")
+  .action((branch) => {
+    changesToPush(branch);
   });
 
 commander
