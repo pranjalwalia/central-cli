@@ -25,7 +25,6 @@ commander
   .description("perform a fast commit with a message")
   .alias("fci")
   .action(() => {
-    //todo: update this args
     const msg = inputstring();
     fastcommit(msg);
   });
@@ -45,7 +44,6 @@ commander
   .description("perform a fast commit and a push on your current branch")
   .alias("fp")
   .action(() => {
-    //todo: update this args
     const msg = inputstring();
     fastpush(msg);
   });
