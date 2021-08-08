@@ -9,6 +9,8 @@ const { changesToPush } = require("./commands/push-diff");
 
 const { inputstring } = require("./utils");
 
+commander.version("0.0.1");
+
 //! git utilites
 commander.command("init").description("run the central cli").action(init);
 
