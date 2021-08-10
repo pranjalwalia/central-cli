@@ -1,4 +1,4 @@
-const { inquirer } = require("inquirer");
+const { prompt } = require("inquirer");
 const { Octokit } = require("@octokit/rest");
 const Configstore = require("configstore");
 const { name } = require("../../package.json");
@@ -33,7 +33,7 @@ const authenticate = async () => {
       },
     ];
 
-    const answer = await inquirer.prompt(questions);
+    const answer = await prompt(questions);
     try {
       const octokit = new Octokit({
         auth: answer.token,

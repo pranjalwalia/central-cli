@@ -1,3 +1,3 @@
-const inputstring = () => process.argv.slice(2).join(" ");
+const inputstring = () => process.argv.slice(3).join(" ");
 
 module.exports = { inputstring };

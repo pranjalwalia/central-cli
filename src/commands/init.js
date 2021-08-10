@@ -6,7 +6,7 @@ const { authenticate } = require("../libs/auth.js");
 const { createRepo, ignoreFiles, initialCommit } = require("../libs/repo.js");
 
 const init = async () => {
-  clear();
+//  clear();
   console.log(
     chalk.magentaBright(
       figlet.textSync("Dev Central", { horizontalLayout: "full" })
