@@ -27,6 +27,6 @@
     "simple-git": "^2.41.2"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
+    "@masterchief01:registry": "https://npm.pkg.github.com"
   }
 }
