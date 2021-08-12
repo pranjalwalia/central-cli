@@ -1,5 +1,5 @@
 // export all config vars from here
 
-const baseURl = "http://172.105.38.98/";
+const baseURl = "https://cntrl-server.tech/";
 
 module.exports = { baseURl };
