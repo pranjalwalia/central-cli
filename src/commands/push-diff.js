@@ -19,7 +19,9 @@ const changesToPush = async (branch) => {
   console.log(chalk.green(">>>"));
   console.log(
     `${chalk.green(
-      res.stdout.toString().match(/commit/g).length,
+      res.stdout.toString().match(/commit/g).length - 2 > 0
+        ? res.stdout.toString().match(/commit/g).length - 2
+        : res.stdout.toString().match(/commit/g).length,
       "COMMITS TO PUSH"
     )} `
   );
